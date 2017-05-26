@@ -47,21 +47,33 @@ class UsersController extends AppController
 
     public function login()
     {
-        if ($this->request->is('post')) {
-            $user = $this->Auth->identify();
-            if ($user) {
-                $this->Auth->setUser($user);
-                return $this->redirect($this->Auth->redirectUrl());
-            }
-
-            $this->Flash->error(__('Invalid email or password, try again'));
+        $authCode = $this->request->query('code', null);
+        if(!is_null($authCode)) {
+          $user = $this->Auth->identify();
+          if($user) {
+            $this->Auth->setUser($user);
+            return $this->redirect($this->Auth->redirectUrl());
+          }
         }
+
+        // if ($this->request->is('post')) {
+        //     $user = $this->Auth->identify();
+        //     if ($user) {
+        //         $this->Auth->setUser($user);
+        //         return $this->redirect($this->Auth->redirectUrl());
+        //     }
+
+        //     $this->Flash->error(__('Invalid email or password, try again'));
+        // }
     }
 
     public function logout()
     {
-        $session = $this->request->session();
-        $session->destroy();
-        return $this->redirect($this->Auth->logout());
+        $url = $this->Auth->logout();
+        $this->request->session()->destroy();
+        return $this->redirect($url);
+        // $session = $this->request->session();
+        // $session->destroy();
+        // return $this->redirect($this->Auth->logout());
     }
 }

@@ -53,8 +53,11 @@ class AppController extends Controller
                 'action' => 'index'
             ],
             'authenticate' => [
-                'Form' => [
-                    'fields' => ['username' => 'emailaddress']
+                'Auth0.Auth0' => [
+                          'domain'        => 'unicoder.auth0.com',
+                          'client_id'     => 'cBhao0PqyJYQWSRD865qSaCEUDnZqgYf',
+                          'client_secret' => 'Ic5RmoAzA2u8JcmYdL-fR_kGxrJV1r8SUJWz55iH1eFeb6Tyd6mSWz8WjQBjWzjU',
+                          'redirect_uri'  => 'http://localhost:8765/users/login'
                 ]
             ]
         ]);

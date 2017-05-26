@@ -1,3 +1,15 @@
+<script>
+  var lock = new Auth0Lock('cBhao0PqyJYQWSRD865qSaCEUDnZqgYf', 'unicoder.auth0.com', {
+    auth: {
+      redirectUrl: 'http://localhost:8765/users/login',
+      responseType: 'code',
+      params: {
+        scope: 'openid email' // Learn about scopes: https://auth0.com/docs/scopes
+      }
+    }
+  });
+</script>
+<button onclick="lock.show();">Login</button>
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
