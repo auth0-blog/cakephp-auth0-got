@@ -36,7 +36,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
 
-    <script src="https://cdn.auth0.com/js/lock/10.16/lock.min.js"></script>
+    <script src="https://cdn.auth0.com/js/auth0/9.0.0/auth0.min.js"></script>
 </head>
 <body>
     <!--
