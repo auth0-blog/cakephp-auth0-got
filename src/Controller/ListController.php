@@ -35,6 +35,14 @@ class ListController extends AppController
        ];
 
         $this->set(compact('characters'));
+
+        $this->initialize();
+        $domain = $this->Auth->getAuthenticate('Auth0.Auth0')->getDomain();
+        $clientId = $this->Auth->getAuthenticate('Auth0.Auth0')->getClientId();
+        $redirectUrl = $this->Auth->getAuthenticate('Auth0.Auth0')->getRedirectUri();
+        $loginUrl = sprintf('https://%s/authorize?client_id=%s&response_type=code&redirect_uri=%s', $domain, $clientId, $redirectUrl);
+
+        $this->set(compact('loginUrl'));
     }
 
     /**
