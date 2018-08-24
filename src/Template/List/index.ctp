@@ -1,4 +1,3 @@
-<button id="btn-login">Login</button>
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
@@ -24,7 +23,7 @@
                 <?php else: ?>
                     <br />
                     <div align="center">
-                      <h5> You need to login to have access to this list <?= $this->Html->link('Login', '/users/login', ['class' => 'btn btn-info']); ?> </h5>
+                      <h5> You need to log in to have access to this list <?= $this->Html->link('Log In', $loginUrl, ['class' => 'btn btn-info']); ?></h5>
                     </div>
                 <?php endif; ?>
             </div>
@@ -32,17 +31,3 @@
         </div>
     </div>
 </div>
-
-<script>
-    var webAuth = new auth0.WebAuth({
-        domain: 'unicoder.auth0.com',
-        clientID: 'cBhao0PqyJYQWSRD865qSaCEUDnZqgYf'
-    });
-
-    document.getElementById('btn-login').addEventListener('click', function() {
-        webAuth.authorize({
-            responseType: 'code',
-            redirectUri: 'http://localhost:8765/users/login'
-        });
-    });
-</script>
